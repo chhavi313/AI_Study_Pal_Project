@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>AI Study Pal - Prototype</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width:800px; margin:20px auto; padding:10px; }
+    label {display:block; margin-top:10px;}
+    textarea { width:100%; height:120px; }
+    .box { border:1px solid #eee; padding:12px; border-radius:6px; background:#fafafa; }
+    button { margin-top:10px; padding:8px 14px; }
+  </style>
+</head>
+<body>
+  <h1>AI Study Pal — Minimal Prototype</h1>
+  <p class="box">This prototype demonstrates: study-plan generation, quiz generator, text summarizer, keyword tips, and downloadable schedule CSV.</p>
+  <form action="/generate" method="post">
+    <label>Subject (e.g., math, cs, english): <input name="subject" value="math" /></label>
+    <label>Study hours (total): <input name="hours" value="5" type="number" min="1"/></label>
+    <label>Quiz difficulty (optional): 
+      <select name="difficulty">
+        <option value="">any</option>
+        <option value="easy">easy</option>
+        <option value="medium">medium</option>
+      </select>
+    </label>
+    <label>Paste text/notes to summarize / extract tips from:</label>
+    <textarea name="sample_text">Enter your notes here. Example: Revision topics: calculus, integrals, derivatives, limits.</textarea>
+    <button type="submit">Generate</button>
+  </form>
+  <hr />
+  <p>Commit this and include a screenshot of the results page in your repo's `docs/` folder for the teacher.</p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Results — AI Study Pal</title>
+  <style>body{font-family: Arial; max-width:900px; margin:20px auto;} .card{border:1px solid #ddd;padding:12px;margin-bottom:12px;border-radius:6px;background:#fff}</style>
+</head>
+<body>
+  <h1>Results for "{{ subject }}" ({{ hours }} hours)</h1>
+
+  <div class="card">
+    <h3>Study Plan</h3>
+    <table border="1" cellpadding="6">
+      <tr><th>Day</th><th>Hours</th><th>Focus</th></tr>
+      {% for s in plan %}
+      <tr><td>{{ s.day }}</td><td>{{ s.hours }}</td><td>{{ s.focus }}</td></tr>
+      {% endfor %}
+    </table>
+    <p><a href="{{ url_for('download_schedule') }}?subject={{ subject }}&hours={{ hours }}">Download CSV</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Quiz (sample)</h3>
+    {% for q in quiz %}
+      <div style="margin-bottom:8px;">
+        <b>Q{{ loop.index }}. {{ q.q }}</b>
+        <ul>
+          {% for opt in q.options %}
+            <li>{{ opt }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="card">
+    <h3>Summary</h3>
+    <p>{{ summary }}</p>
+  </div>
+
+  <div class="card">
+    <h3>Keywords & Tips</h3>
+    <p><b>Keywords:</b> {{ keywords | join(", ") }}</p>
+    <ul>
+    {% for tip in tips %}
+      <li>{{ tip }}</li>
+    {% endfor %}
+    </ul>
+  </div>
+
+  <p><a href="/">Go back</a></p>
+</body>
+</html>

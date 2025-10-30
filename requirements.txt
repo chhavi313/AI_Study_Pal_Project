@@ -1,0 +1,6 @@
+Flask
+pandas
+matplotlib
+scikit-learn
+keras
+nltk
